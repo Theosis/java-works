@@ -1,4 +1,4 @@
-package com.jdpaley.java;
+package com.jdpaley.java.testrun;
 
 import java.util.Scanner;
 
