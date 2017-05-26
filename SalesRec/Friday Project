@@ -1,0 +1,60 @@
+Create a Java console application that allows the user a sales record. 
+
+Each sales record includes: 
+customer number, name, sales amount and a tax code.
+
+The program should loop to enter as many records as the user wishes. 
+Prompt the user to enter another record or quit.
+
+PLAN FIRST! Before you write your program, 
+determine the inputs, processing steps and outputs.  
+Enter them and the pseudocode for the program in the text box, 
+then create the program and submit it through gitHub.
+
+tax code		tax amount
+NRM					6%
+NPF					0%
+BIZ					4.5%
+The program should output a total that includes the tax owed (if any).
+
+Customer ID: 101
+Customer Name: Bart Simpson
+Sales Amount: $500.00
+Tax Code: NPF
+Total Amount Due: $500.00
+
+Do you want to enter another record? (Y/N)
+_____________________________________________________________________
+
+INPUT: 		Get user to enter custNum, custName, salesAmt, taxCode
+OUTPUT:	Display totalAmt incl. corresp.tax. 	
+PROCESS : Calculate tax according to supplied table, add it to salesAmt.
+
+Pseudocode
+
+PRINT "CREATION OF SALES RECORDS"
+PRINT "Enter requested field values."
+
+DOWHILE another="Y"
+	another="N"
+	PRINT
+	INPUT "Customer ID: ", custNum
+	INPUT "Customer Name: ", custName
+	INPUT "Sales Amount: ", salesAmt as $
+	
+	DOWHILE invalidTax
+		LET invalidTax=false
+		INPUT "Tax Code: ", taxCode
+		CONVERT taxCode to upper case
+		IF taxCode is NRM, tax=6 ELSE IF taxCode is BIZ, tax=4.5 ELSE IF taxCode is NPF, tax=0 ELSE invalidTax=true
+	WHILEEND
+	
+	LET totalAmt= salesAmt*(1+tax/100)
+	PRINT "Total Amount Due: ", totalAmt as $
+	PRINT
+	DOWHILE another isn't Y/N
+		INPUT "Do you want to enter another record? (Y/N) ", another
+		CONVERT another to upper case
+	WHILEEND	
+	PRINT
+WHILEEND
