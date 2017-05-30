@@ -1,0 +1,15 @@
+Create Global git ignore
+
+First 4: 
+
+Write the fence cost project in Java
+Guess the Secret Number
+What if completion activity1
+Magic 8 Ball 
+
+--------------------------------------
+break
+--------------------------------------
+
+Triangle Calculator
+
