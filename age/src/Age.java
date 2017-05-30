@@ -8,7 +8,7 @@ public class Age {
 		System.out.println(" ");
 		Scanner kb = new Scanner(System.in);
 		
-		String another;
+		String another = "";
 		LocalDate currDate = LocalDate.now();
 		int currYear					= currDate.getYear();
 		int currMonth 			= currDate.getMonth().getValue();
@@ -20,12 +20,13 @@ public class Age {
 		do {
 				System.out.print("Enter birth YEAR (4 digits): ");
 				birthYear = kb.nextInt();
-				} while ((birthYear < 1897) || (birthYear > currYear));
+				} while ((birthYear < 1897) || (birthYear > currYear));  //There has to be a reasonable limit to valid age range. Here set at 120.
 		
 		System.out.println(" ");
 		do {
 				System.out.print("Enter birth MONTH (2 digits): ");
 				birthMonth = kb.nextInt();
+				if ((birthYear == currYear) && (birthMonth > currMonth)) {birthMonth = 0;}  //If unborn, force re-entry of valid month.
 		} while ((birthMonth < 1) || (birthMonth > 12));
 		
 		YearMonth birthYearMonth = YearMonth.of(birthYear, birthMonth);
@@ -35,6 +36,7 @@ public class Age {
 		do {
 				System.out.print("Enter birth DAY (2 digits): ");
 				birthDay = kb.nextInt();
+				if ((birthYear == currYear) && (birthMonth == currMonth) && (birthDay > currDay)) {birthDay = 0;}  //If unborn, force re-entry of valid day.
 		} while ((birthDay < 1) || (birthDay > daysInBirthMonth));
 
 		System.out.println(" ");
@@ -46,17 +48,25 @@ public class Age {
 			age-- ;
 		}
 		
-		System.out.println("Age = " + age);
+		if (age == 0) {System.out.println("Age = Less than a  year.");}
+		else if (age ==1) {System.out.println("Age = " + age + " year.");}
+		else	{System.out.println("Age = " + age + " years.");}
+			
 		System.out.println(" ");
 		
 		do {
 			System.out.print("Would you like to enter details for another client?  (Y/N) ");
-			another = kb.nextLine();
+
+			another = kb.next();
 			another = another.toUpperCase();
-		} while ( (!another.equals("Y")) && (!another.equals("N")) );	
+
+		} 	while ( (!another.equals("Y")) && (!another.equals("N")) );
 		
 		System.out.println(" ");			
 	} while (another.equals("Y"));
+	
+	System.out.println("Thanks for using the age calculator!");
+
 	kb.close();
 	}
 }
